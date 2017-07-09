@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>hixun&#39;s blog</title>
-  <subtitle>天道酬勤</subtitle>
+  <subtitle>拒绝刻板印象，拒绝墨守陈规</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://hixun/github/io/"/>
   <updated>2017-06-27T13:47:47.867Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://hixun/github/io/</id>
   
   <author>
     <name>hixun</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2017/06/27/hello-world/"/>
-    <id>http://yoursite.com/2017/06/27/hello-world/</id>
+    <link href="https://hixun/github/io/2017/06/27/hello-world/"/>
+    <id>https://hixun/github/io/2017/06/27/hello-world/</id>
     <published>2017-06-27T13:47:47.867Z</published>
     <updated>2017-06-27T13:47:47.867Z</updated>
     

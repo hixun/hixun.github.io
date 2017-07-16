@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hixun.github.io/"/>
-  <updated>2017-07-16T09:21:32.665Z</updated>
+  <updated>2017-07-16T12:26:52.113Z</updated>
   <id>https://hixun.github.io/</id>
   
   <author>
@@ -16,11 +16,25 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>bifengxia</title>
+    <link href="https://hixun.github.io/2017/07/16/bifengxia/"/>
+    <id>https://hixun.github.io/2017/07/16/bifengxia/</id>
+    <published>2017-07-16T12:26:52.000Z</published>
+    <updated>2017-07-16T12:26:52.113Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>我的第一篇博客</title>
-    <link href="https://hixun.github.io/2017/06/27/hello-world/"/>
-    <id>https://hixun.github.io/2017/06/27/hello-world/</id>
+    <link href="https://hixun.github.io/2017/06/27/my_first_blog/"/>
+    <id>https://hixun.github.io/2017/06/27/my_first_blog/</id>
     <published>2017-06-27T13:47:47.867Z</published>
-    <updated>2017-07-16T09:21:32.665Z</updated>
+    <updated>2017-07-16T12:31:04.152Z</updated>
     
     <content type="html"><![CDATA[<h2 id="1-这就是我"><a href="#1-这就是我" class="headerlink" title="1.这就是我"></a>1.这就是我</h2><ul>
 <li>以科研为名进行搬砖的技术小白</li>
@@ -61,6 +75,8 @@
     
     </summary>
     
+    
+      <category term="aboutme" scheme="https://hixun.github.io/tags/aboutme/"/>
     
   </entry>
   

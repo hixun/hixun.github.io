@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="C++,algorithm," />
 
 
 
@@ -96,12 +96,13 @@
 
 
 <meta name="description" content="最近参加联发科编程比赛的题目，有好多感觉并不是很难的题目但是当时就是没有思路或者有了思路写不出具体代码。现在比赛过后还是希望把没有做出来的题目重新做一遍。 题目如下  麻将是国粹，更是成都的生活重心。作为一个成都人，一定要把麻将发扬光大。现在组织有一个重要的任务要交给你：请你设计一个判断是否炸和的程序。  什么是炸和？炸和（和读炸胡），是指达不到和牌条件就把牌推倒了。那什么是和牌呢？和牌代表你赢了">
+<meta name="keywords" content="C++,algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法题-关于麻将是不是炸和？">
 <meta property="og:url" content="https://hixun.github.io/2017/09/16/majiang/index.html">
 <meta property="og:site_name" content="hixun&#39;s blog">
 <meta property="og:description" content="最近参加联发科编程比赛的题目，有好多感觉并不是很难的题目但是当时就是没有思路或者有了思路写不出具体代码。现在比赛过后还是希望把没有做出来的题目重新做一遍。 题目如下  麻将是国粹，更是成都的生活重心。作为一个成都人，一定要把麻将发扬光大。现在组织有一个重要的任务要交给你：请你设计一个判断是否炸和的程序。  什么是炸和？炸和（和读炸胡），是指达不到和牌条件就把牌推倒了。那什么是和牌呢？和牌代表你赢了">
-<meta property="og:updated_time" content="2017-10-04T09:16:55.397Z">
+<meta property="og:updated_time" content="2017-10-04T09:34:34.129Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法题-关于麻将是不是炸和？">
 <meta name="twitter:description" content="最近参加联发科编程比赛的题目，有好多感觉并不是很难的题目但是当时就是没有思路或者有了思路写不出具体代码。现在比赛过后还是希望把没有做出来的题目重新做一遍。 题目如下  麻将是国粹，更是成都的生活重心。作为一个成都人，一定要把麻将发扬光大。现在组织有一个重要的任务要交给你：请你设计一个判断是否炸和的程序。  什么是炸和？炸和（和读炸胡），是指达不到和牌条件就把牌推倒了。那什么是和牌呢？和牌代表你赢了">
@@ -337,6 +338,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法打怪/" itemprop="url" rel="index">
+                    <span itemprop="name">算法打怪</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -379,6 +402,14 @@
 <p>【输入说明】<br>在程序当前目录下存在execute.stdin文件，程序从execute.stdin中取得输入数据。<br>execute.stdin为单行文件，里面存放着一个字符串，代表一副牌。参考上面牌的表示方式。<br>注意：牌序是乱的，请自己组牌。</p>
 <p>【输出说明】<br>若这副牌已经和牌，输出GOOD，炸和则输出BAD。</p>
 <p>【样例】<br>execute.stdin内容：123BCD999abd66<br>输出：BAD</p>
+<blockquote>
+<p>【样例】<br>execute.stdin内容：123BCD999abd66<br>输出：BAD</p>
+</blockquote>
+<p>思路分析：<br>和牌的类型题目中已经说的很清楚，一共有三种情况：<br><strong>普通牌形，即3*x + 2的情况</strong><br><strong>暗七对，即七个对子7*2</strong><br><strong>带杠，即3<em>x + 4</em>y + 2的情况</strong><br>不明白和牌的类型中为啥有暗杠的情况，平时打牌时暗杠不是可以直接翻倍的嘛？可能我打的是假的川麻吧。。。</p>
+<p>首先读取输入的字符串，得到字符串的长度str_len，然后定义一个长度为str_len的数组mj，将字符串转换为数字存储在mj数组中;有万条筒共有27种牌，所以定义一个大小为27的c数组，将每张牌出现的次数放在c数组中。</p>
+<p>str_len如果为14时可能出现前两种情况的和牌，如果str_len大于14小于等于18时可能出现第三中情况的和牌，否则和不了牌。</p>
+<p>具体C++代码如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctype.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> c[<span class="number">27</span>];</div><div class="line"><span class="keyword">int</span> str_len = <span class="number">0</span>;</div><div class="line"><span class="keyword">char</span> str[<span class="number">18</span>];</div><div class="line"><span class="keyword">int</span> mj[<span class="number">18</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span> dep)</span></span>&#123;  <span class="comment">//回溯法递归过程</span></div><div class="line">	<span class="keyword">int</span> i;</div><div class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">27</span>; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (c[i] &gt;= <span class="number">3</span>)</div><div class="line">		&#123;   <span class="comment">//刻子</span></div><div class="line">			<span class="keyword">if</span> ((dep == <span class="number">3</span> &amp;&amp; str_len == <span class="number">14</span>) || (dep == <span class="number">2</span> &amp;&amp; str_len == <span class="number">11</span>) || (dep == <span class="number">1</span> &amp;&amp; str_len == <span class="number">8</span>) || (dep == <span class="number">0</span> &amp;&amp; str_len == <span class="number">5</span>))</div><div class="line">				<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">			c[i] -= <span class="number">3</span>;</div><div class="line">			<span class="keyword">if</span> (search(dep + <span class="number">1</span>)) 				</div><div class="line">				<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">			c[i] += <span class="number">3</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">		</div><div class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt;= <span class="number">24</span>; i++) <span class="keyword">if</span> (i % <span class="number">9</span> &lt;= <span class="number">6</span> &amp;&amp; c[i] &gt;= <span class="number">1</span> &amp;&amp; c[i + <span class="number">1</span>] &gt;= <span class="number">1</span> &amp;&amp; c[i + <span class="number">2</span>] &gt;= <span class="number">1</span>)&#123;                                          <span class="comment">//顺子</span></div><div class="line">		<span class="keyword">if</span> (dep == <span class="number">3</span>) <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">		c[i]--; c[i + <span class="number">1</span>]--; c[i + <span class="number">2</span>]--;</div><div class="line">		<span class="keyword">if</span> (search(dep + <span class="number">1</span>)) <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">		c[i]++; c[i + <span class="number">1</span>]++; c[i + <span class="number">2</span>]++;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> i;</div><div class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">27</span>; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (c[i] == <span class="number">2</span> &amp;&amp; str_len == <span class="number">2</span>)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (c[i] &gt;= <span class="number">2</span>)&#123;   <span class="comment">//将牌</span></div><div class="line">			c[i] -= <span class="number">2</span>;</div><div class="line">			<span class="keyword">if</span> (search(<span class="number">0</span>))</div><div class="line">				<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">			c[i] += <span class="number">2</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">		</div><div class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">	</div><div class="line">	FILE* fp = fopen(<span class="string">"execute.stdin"</span>, <span class="string">"r"</span>);</div><div class="line"></div><div class="line">	fgets(str, <span class="number">19</span>, fp);</div><div class="line">	<span class="keyword">while</span> (str[str_len])</div><div class="line">	&#123;</div><div class="line">		str_len++;	</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str_len; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (<span class="built_in">isdigit</span>(str[i]))</div><div class="line">		&#123;</div><div class="line">			mj[i] = (str[i] - <span class="string">'1'</span>);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">isupper</span>(str[i]))</div><div class="line">		&#123;</div><div class="line">			mj[i] = (str[i] - <span class="string">'A'</span>) + <span class="number">9</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">islower</span>(str[i]))</div><div class="line">		&#123;</div><div class="line">			mj[i] = (str[i] - <span class="string">'a'</span>) + <span class="number">18</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; str_len; j++) </div><div class="line">		c[mj[j]]++;</div><div class="line"></div><div class="line"></div><div class="line">	<span class="keyword">if</span> (str_len == <span class="number">14</span>)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (check() == <span class="number">1</span>)</div><div class="line">		&#123;</div><div class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"GOOD"</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> ((c[mj[<span class="number">1</span>]] == <span class="number">2</span>) &amp;&amp; (c[mj[<span class="number">2</span>]] == <span class="number">2</span>) &amp;&amp; (c[mj[<span class="number">3</span>]] == <span class="number">2</span>) &amp;&amp; (c[mj[<span class="number">4</span>]] == <span class="number">2</span>) &amp;&amp; (c[mj[<span class="number">5</span>]] == <span class="number">2</span>) &amp;&amp; (c[mj[<span class="number">6</span>]] == <span class="number">2</span>) &amp;&amp; (c[mj[<span class="number">0</span>]] == <span class="number">2</span>))</div><div class="line">		&#123;</div><div class="line"></div><div class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"GOOD"</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"BAD"</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span> ((str_len &gt; <span class="number">14</span>) &amp;&amp; (str_len &lt;= <span class="number">18</span>))</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> tem = <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> four_num = <span class="number">0</span>;</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; str_len; j++)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (c[mj[j]] == <span class="number">4</span>)</div><div class="line">			&#123;</div><div class="line">				four_num++;</div><div class="line">				c[mj[j]] = <span class="number">0</span>;</div><div class="line">				tem = mj[j];</div><div class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str_len; i++)</div><div class="line">				&#123;</div><div class="line">					<span class="keyword">if</span> (tem == mj[i])</div><div class="line">					&#123;</div><div class="line">						mj[i] = <span class="number">0</span>;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		str_len = str_len - four_num * <span class="number">4</span>;</div><div class="line">		<span class="keyword">if</span> (check())</div><div class="line">		&#123;</div><div class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"GOOD"</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"BAD"</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"BAD"</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	system(<span class="string">"pause"</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>主要参考<a href="http://blog.csdn.net/jiahao8915/article/details/53590525" target="_blank" rel="external">说说算法题的那些事儿(3)~麻将算法题</a>,主要加上了判断后两种和牌的方式。</p>
 
       
     </div>
@@ -405,6 +436,14 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+            <a href="/tags/algorithm/" rel="tag"># algorithm</a>
+          
+        </div>
       
 
       
@@ -520,7 +559,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -531,7 +570,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
